@@ -1,0 +1,11 @@
+{
+    "manifest_version": 2,
+    "name": "LensView",
+    "description": "View comments from LensView about current page",
+    "version": "0.1",
+    "permissions": ["activeTab"],
+    "browser_action": {
+      "default_popup": "popup.html"
+    }
+  }
+  
