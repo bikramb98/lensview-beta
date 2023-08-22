@@ -30,3 +30,10 @@ document.addEventListener('DOMContentLoaded', function () {
       });
   });
 });
+document.getElementById('gotoLVButton').addEventListener('click', function() {
+    // Define the URL you want to navigate to
+    var targetUrl = 'https://testnet.lensview.io';
+
+    // Open a new tab with the specified URL
+    chrome.tabs.create({ url: targetUrl });
+});
