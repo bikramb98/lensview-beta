@@ -27,16 +27,20 @@ document.addEventListener('DOMContentLoaded', function () {
                   contentContainer.appendChild(stringElement);
               }
           }
+
+          document.getElementById('gotoLVButton').addEventListener('click', function() {
+            // Define the URL you want to navigate to
+            var targetUrl = 'https://testnet.lensview.io/posts/'+post_id;
+        
+            // Open a new tab with the specified URL
+            chrome.tabs.create({ url: targetUrl });
+        });
+
+
       })
       .catch((error) => {
           console.error('Error:', error);
       });
   });
 });
-document.getElementById('gotoLVButton').addEventListener('click', function() {
-    // Define the URL you want to navigate to
-    var targetUrl = 'https://testnet.lensview.io';
 
-    // Open a new tab with the specified URL
-    chrome.tabs.create({ url: targetUrl });
-});
