@@ -10,8 +10,11 @@ document.addEventListener('DOMContentLoaded', function () {
       })
       .then(response => response.json())  // Parse the response as JSON
       .then(data => {
-          var stringsObject = data; // The data object directly
+          var stringsObject = data.comments_list; // The data object directly
           var contentContainer = document.getElementById('content');
+          var post_id = data.post_id;
+
+          console.log(post_id)
 
           // Loop through each string property in the object and create a <p> element for each
           for (var key in stringsObject) {

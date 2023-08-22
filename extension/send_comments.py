@@ -39,10 +39,11 @@ def analyze_url():
         post_id = get_comments.get_post_id()
         comments_list = get_comments.get_comments(post_id=post_id)
         print("numb comments: ", len(comments_list))
+        response_data = {'post_id': post_id, 'comments_list':comments_list}
     else:
         result = "Send a POST request with a URL"
     # return jsonify(result=comments_list)
-    return json.dumps(comments_list)
+    return json.dumps(response_data)
 
 if __name__ == '__main__':
     app.run(port=5000)
