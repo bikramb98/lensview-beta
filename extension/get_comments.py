@@ -30,8 +30,13 @@ class GetComments:
         response = requests.request("POST", self.url, headers=headers, data=payload)
 
         response_data_json = json.loads(response.text)
-        post_id = response_data_json['data']['publications']['items'][0]['id']
-        print("Post ID is: ", post_id)
+
+        len_response_data = len(response_data_json['data']['publications']['items'])
+
+        if len_response_data == 0:
+            post_id = 0
+        else:
+            post_id = response_data_json['data']['publications']['items'][0]['id']
 
         return post_id
 

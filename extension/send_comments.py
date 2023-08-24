@@ -37,8 +37,11 @@ def analyze_url():
         get_comments = GetComments(hashedURL=str(hashed_var),lensID="0x8eb1")
         print(f"Processed URL: {processed_url}")
         post_id = get_comments.get_post_id()
-        comments_list = get_comments.get_comments(post_id=post_id)
-        print("numb comments: ", len(comments_list))
+        if post_id == 0:
+            comments_list = ['Be the first one to comment on this webpage!']
+        else:
+            comments_list = get_comments.get_comments(post_id=post_id)
+        # print("numb comments: ", len(comments_list))
         response_data = {'post_id': post_id, 'comments_list':comments_list}
     else:
         result = "Send a POST request with a URL"

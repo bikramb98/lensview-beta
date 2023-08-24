@@ -30,7 +30,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
           document.getElementById('gotoLVButton').addEventListener('click', function() {
             // Define the URL you want to navigate to
-            var targetUrl = 'https://testnet.lensview.io/posts/'+post_id;
+            var targetUrl;
+
+            if (post_id === 0) {
+                targetUrl = 'https://testnet.lensview.io';
+            } else {
+                targetUrl = 'https://testnet.lensview.io/posts/' + post_id;
+            }
         
             // Open a new tab with the specified URL
             chrome.tabs.create({ url: targetUrl });
