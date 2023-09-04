@@ -66,9 +66,10 @@ class GetComments:
         for i in range(len(response_data_json['data']['publications']['items'])):
             handle = response_data_json['data']['publications']['items'][i]['profile']['handle']
             comment = response_data_json['data']['publications']['items'][i]['metadata']['content']
-            print("--xx--")
-            print(comment)
-            user_handle.append(handle)
-            comments_list.append(comment)
+            if "The image link for the url is " not in comment:
+                print("--xx--")
+                print(comment)
+                user_handle.append(handle)
+                comments_list.append(comment)
 
         return comments_list, user_handle
