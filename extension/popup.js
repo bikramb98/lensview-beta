@@ -21,8 +21,19 @@ document.addEventListener('DOMContentLoaded', function () {
                   var stringElement = document.createElement('p');
                   stringElement.textContent = user_handle[key] + ": " + stringsObject[key];
                   stringElement.style.marginBottom = '30px';
-                  stringElement.style.display = 'block'; 
+                  stringElement.style.display = 'block';
+                  stringElement.style.border = '1px solid #ccc'; // Border style
+                  stringElement.style.borderRadius = '10px'; // Adjust the line style as needed
+                  stringElement.style.padding = '10px';
+                  stringElement.style.backgroundColor = '#1E4748';
+                  
+                //   var hrElement = document.createElement('hr');
+                //   hrElement.style.border = '1px solid #ccc'; // Border style
+                //   hrElement.style.borderRadius = '10px'; // Adjust the line style as needed
+                //   hrElement.style.padding = '10px';
+
                   contentContainer.appendChild(stringElement);
+                //   contentContainer.appendChild(hrElement);
               }
           }
 
