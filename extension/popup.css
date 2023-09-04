@@ -1,5 +1,18 @@
 html
 {
-    width: 1000px; /* max: 1000px */
+    width: 500px; /* max: 1000px */
     height: 750px; /* max: 750px */
+    background-color: #0D171D; /* Lensview background */
 }
+
+body {
+    color: #FFFFFF; /* White text color */
+  }
+
+/* Style for the button */
+button#gotoLVButton {
+    position: absolute;
+    bottom: 10px; /* Adjust the value as needed */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center horizontally */
+  }
