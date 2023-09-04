@@ -39,10 +39,12 @@ def analyze_url():
         post_id = get_comments.get_post_id()
         if post_id == 0:
             comments_list = ['Be the first one to comment on this webpage!']
+            user_handle_list = ['']
         else:
-            comments_list = get_comments.get_comments(post_id=post_id)
+            comments_list = get_comments.get_comments(post_id=post_id)[0] #Index 0 is comment list
+            user_handle_list =  get_comments.get_comments(post_id=post_id)[1] #Index 1 is user_handle list
         # print("numb comments: ", len(comments_list))
-        response_data = {'post_id': post_id, 'comments_list':comments_list}
+        response_data = {'post_id': post_id, 'comments_list':comments_list, 'user_handle_list': user_handle_list}
     else:
         result = "Send a POST request with a URL"
     # return jsonify(result=comments_list)

@@ -1,16 +1,23 @@
 html
 {
-    width: 500px; /* max: 1000px */
-    height: 750px; /* max: 750px */
+    width: 250px; /* max: 1000px */
+    height: 450px; /* max: 750px */
     background-color: #0D171D; /* Lensview background */
 }
 
 body {
     color: #FFFFFF; /* White text color */
+    font-family: 'DM Sans';
+    font-weight: 16;
+    font-size: 16px;
   }
 
 /* Style for the button */
 button#gotoLVButton {
+    border-radius: 10.8px;
+    border: #0D171D;
+    background: linear-gradient(103deg, #23F9FF,#DBF1FF);
+    /* background: linear-gradient(#23F9FF, #DBF1FF); */
     position: absolute;
     bottom: 10px; /* Adjust the value as needed */
     left: 50%; /* Center horizontally */

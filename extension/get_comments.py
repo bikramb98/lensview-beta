@@ -43,6 +43,7 @@ class GetComments:
     def get_comments(self, post_id):
 
         comments_list = []
+        user_handle = []
 
         payload = json.dumps({
         "query": "# Write your query or mutation here\nquery Publications($postid: InternalPublicationId) {\n  publications(request: {\n    commentsOf: $postid,\n    metadata: {\n      locale: \"en-us\"\n    }\n  }) {\n    items {\n    ... on Post {\n      ...PostFields\n    }\n    ... on Comment {\n      ...CommentFields\n    }\n    ... on Mirror {\n      ...MirrorFields\n    }\n    }\n  }\n}\n\nfragment MediaFields on Media {\n  url\n  mimeType\n}\n\nfragment ProfileFields on Profile {\n  id\n  name\n  attributes {\n    displayType\n    traitType\n    key\n    value\n  }\n  isFollowedByMe\n  isFollowing(who: null)\n  followNftAddress\n  metadata\n  isDefault\n  handle\n  picture {\n    ... on NftImage {\n      contractAddress\n      tokenId\n      uri\n      verified\n    }\n    ... on MediaSet {\n      original {\n        ...MediaFields\n      }\n    }\n  }\n  coverPicture {\n    ... on NftImage {\n      contractAddress\n      tokenId\n      uri\n      verified\n    }\n    ... on MediaSet {\n      original {\n        ...MediaFields\n      }\n    }\n  }\n  ownedBy\n}\n\nfragment PublicationStatsFields on PublicationStats { \n  totalAmountOfMirrors\n  totalAmountOfCollects\n  totalAmountOfComments\n  totalUpvotes\n}\n\nfragment MetadataOutputFields on MetadataOutput {\n  name\n  description\n  content\n  media {\n    original {\n      ...MediaFields\n    }\n  }\n  attributes {\n    displayType\n    traitType\n    value\n  }\n  tags\n}\n\n\nfragment PostFields on Post {\n  id\n  profile {\n    ...ProfileFields\n  }\n  stats {\n    ...PublicationStatsFields\n  }\n  metadata {\n    ...MetadataOutputFields\n  }\n  createdAt\n  appId\n  hidden\n  reaction(request: null)\n  mirrors(by: null)\n  hasCollectedByMe\n}\n\nfragment MirrorBaseFields on Mirror {\n  id\n  profile {\n    ...ProfileFields\n  }\n  stats {\n    ...PublicationStatsFields\n  }\n  metadata {\n    ...MetadataOutputFields\n  }\n  createdAt\n  appId\n  hidden\n  reaction(request: null)\n  hasCollectedByMe\n}\n\nfragment MirrorFields on Mirror {\n  ...MirrorBaseFields\n  mirrorOf {\n   ... on Post {\n      ...PostFields          \n   }\n   ... on Comment {\n      ...CommentFields          \n   }\n  }\n}\n\nfragment CommentBaseFields on Comment {\n  id\n  profile {\n    ...ProfileFields\n  }\n  stats {\n    ...PublicationStatsFields\n  }\n  metadata {\n    ...MetadataOutputFields\n  }\n  createdAt\n  appId\n}\n\nfragment CommentFields on Comment {\n  ...CommentBaseFields\n  mainPost {\n    ... on Post {\n      ...PostFields\n    }\n    ... on Mirror {\n      ...MirrorBaseFields\n      mirrorOf {\n        ... on Post {\n           ...PostFields          \n        }\n        ... on Comment {\n           ...CommentMirrorOfFields        \n        }\n      }\n    }\n  }\n}\n\nfragment CommentMirrorOfFields on Comment {\n  ...CommentBaseFields\n  mainPost {\n    ... on Post {\n      ...PostFields\n    }\n    ... on Mirror {\n       ...MirrorBaseFields\n    }\n  }\n}",
@@ -63,9 +64,11 @@ class GetComments:
         response_data_json = json.loads(response.text)
 
         for i in range(len(response_data_json['data']['publications']['items'])):
-            comment = response_data_json['data']['publications']['items'][i]['metadata']['content'] #partially working
+            handle = response_data_json['data']['publications']['items'][i]['profile']['handle']
+            comment = response_data_json['data']['publications']['items'][i]['metadata']['content']
             print("--xx--")
             print(comment)
+            user_handle.append(handle)
             comments_list.append(comment)
 
-        return comments_list
+        return comments_list, user_handle

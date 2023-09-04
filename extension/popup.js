@@ -13,16 +13,14 @@ document.addEventListener('DOMContentLoaded', function () {
           var stringsObject = data.comments_list; // The data object directly
           var contentContainer = document.getElementById('content');
           var post_id = data.post_id;
-
-          console.log(post_id)
+          var user_handle = data.user_handle_list;
 
           // Loop through each string property in the object and create a <p> element for each
           for (var key in stringsObject) {
-            console.log("hi")
               if (stringsObject.hasOwnProperty(key)) {
                   var stringElement = document.createElement('p');
-                  stringElement.textContent = stringsObject[key];
-                  stringElement.style.marginBottom = '100px';
+                  stringElement.textContent = user_handle[key] + ": " + stringsObject[key];
+                  stringElement.style.marginBottom = '30px';
                   stringElement.style.display = 'block'; 
                   contentContainer.appendChild(stringElement);
               }
