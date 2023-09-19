@@ -19,13 +19,25 @@ document.addEventListener('DOMContentLoaded', function () {
           for (var key in stringsObject) {
               if (stringsObject.hasOwnProperty(key)) {
                   var stringElement = document.createElement('p');
-                  stringElement.textContent = user_handle[key] + ": " + stringsObject[key];
+                  stringElement.textContent = user_handle[key] + ': ' + stringsObject[key];
                   stringElement.style.marginBottom = '30px';
                   stringElement.style.display = 'block';
                   stringElement.style.border = '1px solid #ccc'; // Border style
                   stringElement.style.borderRadius = '10px'; // Adjust the line style as needed
                   stringElement.style.padding = '10px';
                   stringElement.style.backgroundColor = '#1E4748';
+
+                //   var newContainer = document.createElement('div');
+                //   newContainer.style.marginBottom = '10px';
+                //   newContainer.style.backgroundColor = '#FFFFF';
+                //   newContainer.style.position = 'absolute'-'15px'; // Absolute positioning
+                //   newContainer.style.top = '0'; // Position at the top
+                //   newContainer.style.left = '0'; // Position at the left
+                //   newContainer.style.marginBottom = '30px';
+                //   newContainer.textContent = user_handle[key]
+                //   newContainer.style.padding = '10px';
+
+                //   stringElement.appendChild(newContainer);
                   
                 //   var hrElement = document.createElement('hr');
                 //   hrElement.style.border = '1px solid #ccc'; // Border style

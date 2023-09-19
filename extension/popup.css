@@ -3,6 +3,7 @@ html
     width: 300px; /* max: 1000px */
     height: 500px; /* max: 750px */
     background-color: #0D171D; /* Lensview background */
+    /* overflow: auto; Add scrollbars when content overflows */
 }
 
 body {
